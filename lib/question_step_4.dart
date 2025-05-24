@@ -20,13 +20,13 @@ class _QuestionStep4State extends State<QuestionStep4> {
         backgroundColor: const Color(0xFF6A2EE8),
         elevation: 0,
         centerTitle: true,
-        title: const Text("4 / 5", style: TextStyle(color: Colors.white)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Image.asset('assets/images/logo.png', width: 100),
             const Text(
               "Online mı fiziksel mi?",
               style: TextStyle(
@@ -87,6 +87,24 @@ class _QuestionStep4State extends State<QuestionStep4> {
                   "İleri",
                   style: TextStyle(color: Color(0xFF6A2EE8)),
                 ),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+            Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: const [
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                ],
               ),
             ),
           ],

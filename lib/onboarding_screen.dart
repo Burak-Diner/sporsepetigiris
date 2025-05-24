@@ -15,23 +15,27 @@ class OnboardingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(flex: 2),
-            Column(
-              children: [
-                Expanded(
-                  child: Image.asset('assets/images/logo_text.png', width: 180),
-                ),
-                SizedBox(height: 24),
-                Expanded(
-                  child: Text(
-                    "Spor yapmak pizza siparişi vermek kadar kolay! Ücretsiz kayıt olarak hemen spora başlayın ve spor dolu bir hayata adım atın!",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+            Expanded(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Image.asset('assets/images/logo_text.png'),
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 24),
+                  Expanded(
+                    child: Text(
+                      "Spor yapmak pizza siparişi vermek kadar kolay! Ücretsiz kayıt olarak hemen spora başlayın ve spor dolu bir hayata adım atın!",
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 20),
-
+            const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               height: 50,
@@ -55,7 +59,6 @@ class OnboardingScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
-
             SizedBox(
               width: double.infinity,
               height: 50,

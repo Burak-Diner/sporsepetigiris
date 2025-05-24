@@ -20,114 +20,143 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF6A2EE8),
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Column(
+        child: Stack(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Center(child: Image.asset('assets/images/logo.png', width: 60)),
-              ],
-            ),
-            const SizedBox(height: 12),
-            const Text(
-              "Kaydol",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Image.asset('assets/images/logo.png', width: 60),
               ),
             ),
-            const SizedBox(height: 24),
-            Expanded(
-              // Bu sayede beyaz kutu ekranın altına kadar uzanır
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-                ),
-                child: Form(
-                  key: _formKey,
-                  child: ListView(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(child: _buildTextField(label: "İsim")),
-                          const SizedBox(width: 10),
-                          Expanded(child: _buildTextField(label: "Soyisim")),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      _buildDateField(),
-                      const SizedBox(height: 12),
-                      _buildGenderField(),
-                      const SizedBox(height: 12),
-                      _buildTextField(label: "+90", icon: Icons.phone),
-                      const SizedBox(height: 12),
-                      _buildTextField(label: "E-Mail", icon: Icons.email),
-                      const SizedBox(height: 12),
-                      _buildPasswordField("Şifre", _obscurePassword, () {
-                        setState(() => _obscurePassword = !_obscurePassword);
-                      }),
-                      const SizedBox(height: 12),
-                      _buildPasswordField("Şifre Onayla", _obscureConfirm, () {
-                        setState(() => _obscureConfirm = !_obscureConfirm);
-                      }),
-                      const SizedBox(height: 20),
-                      SizedBox(
-                        height: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF6A2EE8),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => const QuestionStep1(),
-                              ),
-                            );
-                          },
-                          child: const Text(
-                            "Kaydol",
-                            style: TextStyle(fontSize: 16),
-                          ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 100),
+              child: Column(
+                children: [
+                  const Text(
+                    textAlign: TextAlign.left,
+                    "Kaydol",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Expanded(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(30),
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => const LoginScreen(),
-                              ),
-                            );
-                          },
-                          child: const Text.rich(
-                            TextSpan(
-                              text: "Zaten bir hesabın var mı? ",
+                      child: Form(
+                        key: _formKey,
+                        child: ListView(
+                          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                          physics: const BouncingScrollPhysics(),
+                          children: [
+                            Row(
                               children: [
-                                TextSpan(
-                                  text: "Giriş Yap",
-                                  style: TextStyle(
-                                    color: Color(0xFF6A2EE8),
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Expanded(child: _buildTextField(label: "İsim")),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: _buildTextField(label: "Soyisim"),
                                 ),
                               ],
                             ),
-                          ),
+                            const SizedBox(height: 12),
+                            _buildDateField(),
+                            const SizedBox(height: 12),
+                            _buildGenderField(),
+                            const SizedBox(height: 12),
+                            _buildTextField(
+                              label: "+90",
+                              icon: Icons.phone_outlined,
+                            ),
+                            const SizedBox(height: 12),
+                            _buildTextField(
+                              label: "E-Mail",
+                              icon: Icons.email_outlined,
+                            ),
+                            const SizedBox(height: 12),
+                            _buildPasswordField("Şifre", _obscurePassword, () {
+                              setState(
+                                () => _obscurePassword = !_obscurePassword,
+                              );
+                            }),
+                            const SizedBox(height: 12),
+                            _buildPasswordField(
+                              "Şifre Onayla",
+                              _obscureConfirm,
+                              () {
+                                setState(
+                                  () => _obscureConfirm = !_obscureConfirm,
+                                );
+                              },
+                            ),
+                            const SizedBox(height: 20),
+                            SizedBox(
+                              height: 50,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF6A2EE8),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => const QuestionStep1(),
+                                    ),
+                                  );
+                                },
+                                child: const Text(
+                                  "Kaydol",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Center(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => const LoginScreen(),
+                                    ),
+                                  );
+                                },
+                                child: const Text.rich(
+                                  TextSpan(
+                                    text: "Zaten bir hesabın var mı? ",
+                                    children: [
+                                      TextSpan(
+                                        text: "Giriş Yap",
+                                        style: TextStyle(
+                                          color: Color(0xFF6A2EE8),
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                          ],
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ],
@@ -157,9 +186,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       obscureText: obscure,
       decoration: InputDecoration(
         hintText: label,
-        prefixIcon: const Icon(Icons.lock),
         suffixIcon: IconButton(
-          icon: Icon(obscure ? Icons.visibility_off : Icons.visibility),
+          icon: Icon(
+            obscure ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+          ),
           onPressed: onToggle,
         ),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
@@ -185,7 +215,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: AbsorbPointer(
         child: TextFormField(
           decoration: InputDecoration(
-            prefixIcon: const Icon(Icons.calendar_today),
+            prefixIcon: const Icon(Icons.calendar_today_outlined),
             hintText:
                 selectedDate != null
                     ? "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}"
