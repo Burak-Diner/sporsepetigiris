@@ -23,9 +23,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 32),
-            Center(
-              child: Image.asset('assets/images/logo_text.png', width: 60),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Center(child: Image.asset('assets/images/logo.png', width: 60)),
+              ],
             ),
             const SizedBox(height: 12),
             const Text(
@@ -38,6 +40,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 24),
             Expanded(
+              // Bu sayede beyaz kutu ekranın altına kadar uzanır
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: const BoxDecoration(

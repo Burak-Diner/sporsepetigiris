@@ -15,14 +15,22 @@ class OnboardingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(flex: 2),
-            Image.asset('assets/images/logo_text.png', width: 180),
-            const SizedBox(height: 24),
-            const Text(
-              "Spor yapmak pizza siparişi vermek kadar kolay!\nÜcretsiz kayıt olarak hemen spora başlayın ve spor dolu bir hayata adım atın!",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 15),
+            Column(
+              children: [
+                Expanded(
+                  child: Image.asset('assets/images/logo_text.png', width: 180),
+                ),
+                SizedBox(height: 24),
+                Expanded(
+                  child: Text(
+                    "Spor yapmak pizza siparişi vermek kadar kolay! Ücretsiz kayıt olarak hemen spora başlayın ve spor dolu bir hayata adım atın!",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  ),
+                ),
+              ],
             ),
-            const Spacer(flex: 3),
+            SizedBox(height: 20),
 
             SizedBox(
               width: double.infinity,
