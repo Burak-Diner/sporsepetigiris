@@ -32,14 +32,16 @@ class _QuestionStep5State extends State<QuestionStep5> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo.png', width: 100),
+            Image.asset('assets/images/logo.png', width: 75),
+            SizedBox(height: 25),
             const Text(
-              "Sporsepetinden beklentin ne?",
+              "Son olarak, sporsepetinden beklentin ne?",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
             Wrap(
@@ -71,6 +73,7 @@ class _QuestionStep5State extends State<QuestionStep5> {
                         borderRadius: BorderRadius.circular(30),
                         side: const BorderSide(color: Colors.white),
                       ),
+                      showCheckmark: false,
                     );
                   }).toList(),
             ),

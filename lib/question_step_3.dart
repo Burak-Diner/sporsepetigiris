@@ -34,14 +34,16 @@ class _QuestionStep3State extends State<QuestionStep3> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo.png', width: 100),
+            Image.asset('assets/images/logo.png', width: 75),
+            SizedBox(height: 25),
             const Text(
-              "Hangi günler spor yaparsın?",
+              "Hangi günler daha çok spor yaparsın?",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
             Wrap(
@@ -73,6 +75,7 @@ class _QuestionStep3State extends State<QuestionStep3> {
                         borderRadius: BorderRadius.circular(30),
                         side: const BorderSide(color: Colors.white),
                       ),
+                      showCheckmark: false,
                     );
                   }).toList(),
             ),

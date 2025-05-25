@@ -29,7 +29,7 @@ class _SplashScreen2State extends State<SplashScreen2> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo_text.png', width: 100),
+            Image.asset('assets/images/logo.png', width: 100),
             const SizedBox(height: 16),
             const Text(
               "Spora Erişmenin En Kolay Yolu!",

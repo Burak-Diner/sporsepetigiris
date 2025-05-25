@@ -34,12 +34,13 @@ class _QuestionStep1State extends State<QuestionStep1> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo.png', width: 100),
+            Image.asset('assets/images/logo.png', width: 75),
+            SizedBox(height: 25),
             Text(
               "Öncelikle seni biraz tanıyarak başlayalım...",
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 25),
             Text(
               "Favori sporun hangisi?",
               style: TextStyle(
@@ -47,6 +48,7 @@ class _QuestionStep1State extends State<QuestionStep1> {
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
 
@@ -80,6 +82,7 @@ class _QuestionStep1State extends State<QuestionStep1> {
                         borderRadius: BorderRadius.circular(30),
                         side: const BorderSide(color: Colors.white),
                       ),
+                      showCheckmark: false,
                     );
                   }).toList(),
             ),

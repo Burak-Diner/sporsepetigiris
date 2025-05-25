@@ -21,7 +21,10 @@ class OnboardingScreen extends StatelessWidget {
                   Expanded(
                     child: Align(
                       alignment: Alignment.bottomLeft,
-                      child: Image.asset('assets/images/logo_text.png'),
+                      child: Image.asset(
+                        'assets/images/logo_text.png',
+                        width: 200,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 24),

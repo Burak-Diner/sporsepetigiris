@@ -10,7 +10,7 @@ class QuestionStep4 extends StatefulWidget {
 
 class _QuestionStep4State extends State<QuestionStep4> {
   final List<String> options = ['Online', 'Fiziksel'];
-  String? selected;
+  final List<String> selected = [];
 
   @override
   Widget build(BuildContext context) {
@@ -26,26 +26,34 @@ class _QuestionStep4State extends State<QuestionStep4> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo.png', width: 100),
+            Image.asset('assets/images/logo.png', width: 75),
+            SizedBox(height: 25),
             const Text(
-              "Online mı fiziksel mi?",
+              "Sence online etkinlikler mi?, yoksa fiziksel etkinlikler mi?",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
             Wrap(
               spacing: 10,
               children:
                   options.map((opt) {
-                    final isSelected = opt == selected;
-                    return ChoiceChip(
+                    final isSelected = selected.contains(opt);
+                    return FilterChip(
                       label: Text(opt),
                       selected: isSelected,
-                      onSelected: (_) {
-                        setState(() => selected = opt);
+                      onSelected: (value) {
+                        setState(() {
+                          if (value) {
+                            selected.add(opt);
+                          } else {
+                            selected.remove(opt);
+                          }
+                        });
                       },
                       selectedColor: Colors.white,
                       backgroundColor: const Color(0xFF6A2EE8),
@@ -58,6 +66,7 @@ class _QuestionStep4State extends State<QuestionStep4> {
                         borderRadius: BorderRadius.circular(30),
                         side: const BorderSide(color: Colors.white),
                       ),
+                      showCheckmark: false,
                     );
                   }).toList(),
             ),
@@ -73,7 +82,7 @@ class _QuestionStep4State extends State<QuestionStep4> {
                   ),
                 ),
                 onPressed:
-                    selected != null
+                    selected.isNotEmpty
                         ? () {
                           Navigator.push(
                             context,
@@ -89,7 +98,6 @@ class _QuestionStep4State extends State<QuestionStep4> {
                 ),
               ),
             ),
-
             const SizedBox(height: 12),
             Center(
               child: Row(
