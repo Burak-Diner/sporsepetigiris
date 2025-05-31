@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'question_step_3.dart';
+import 'question_step_7.dart';
 
-class QuestionStep2 extends StatefulWidget {
-  const QuestionStep2({super.key});
+class QuestionStep6 extends StatefulWidget {
+  const QuestionStep6({super.key});
 
   @override
-  State<QuestionStep2> createState() => _QuestionStep2State();
+  State<QuestionStep6> createState() => _QuestionStep6State();
 }
 
-class _QuestionStep2State extends State<QuestionStep2> {
+class _QuestionStep6State extends State<QuestionStep6> {
   final List<String> options = [
-    "Her gün",
-    "Haftada 4-5 kez",
-    "Haftada 2-3 kez",
-    "Hafta 1 kez",
-    "Ara sıra / Düzensiz",
-    "Yeni Başlıyorum",
+    'Forma girmek',
+    'Yeni insanlarla tanışmak',
+    'Eğlenmek',
+    'Kendini geliştirmek',
+    'Profesyonelleşmek',
   ];
-
-  String? selected;
+  final List<String> selectedOptions = [];
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,7 @@ class _QuestionStep2State extends State<QuestionStep2> {
             Image.asset('assets/images/logo.png', width: 75),
             SizedBox(height: 25),
             const Text(
-              "Peki, ne sıklıkla spor yaparsın?",
+              "Son olarak, sporsepetinden beklentin ne?",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
@@ -51,13 +49,17 @@ class _QuestionStep2State extends State<QuestionStep2> {
               runSpacing: 10,
               children:
                   options.map((opt) {
-                    final isSelected = opt == selected;
-                    return ChoiceChip(
+                    final isSelected = selectedOptions.contains(opt);
+                    return FilterChip(
                       label: Text(opt),
                       selected: isSelected,
-                      onSelected: (_) {
+                      onSelected: (value) {
                         setState(() {
-                          selected = opt;
+                          if (value) {
+                            selectedOptions.add(opt);
+                          } else {
+                            selectedOptions.remove(opt);
+                          }
                         });
                       },
                       selectedColor: Colors.white,
@@ -87,39 +89,40 @@ class _QuestionStep2State extends State<QuestionStep2> {
                   ),
                 ),
                 onPressed:
-                    selected != null
+                    selectedOptions.isNotEmpty
                         ? () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const QuestionStep3(),
+                              builder: (_) => const QuestionStep7(),
                             ),
                           );
                         }
                         : null,
                 child: const Text(
-                  "İleri",
+                  "Tamamla",
                   style: TextStyle(color: Color(0xFF6A2EE8)),
                 ),
               ),
             ),
 
             const SizedBox(height: 12),
+
             Center(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: const [
                   Icon(Icons.circle, size: 10, color: Colors.white54),
                   SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
                   Icon(Icons.circle, size: 10, color: Colors.white),
-                  SizedBox(width: 6),
-                  Icon(Icons.circle, size: 10, color: Colors.white54),
-                  SizedBox(width: 6),
-                  Icon(Icons.circle, size: 10, color: Colors.white54),
-                  SizedBox(width: 6),
-                  Icon(Icons.circle, size: 10, color: Colors.white54),
-                  SizedBox(width: 6),
-                  Icon(Icons.circle, size: 10, color: Colors.white54),
                   SizedBox(width: 6),
                   Icon(Icons.circle, size: 10, color: Colors.white54),
                 ],

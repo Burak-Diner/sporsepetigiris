@@ -9,8 +9,17 @@ class QuestionStep4 extends StatefulWidget {
 }
 
 class _QuestionStep4State extends State<QuestionStep4> {
-  final List<String> options = ['Online', 'Fiziksel'];
-  final List<String> selected = [];
+  final List<String> options = [
+    'Rekabet / Maç kazanmak',
+    'Eğlenmek ve keyifli vakit geçirmek',
+    'Antrenman yapmak ve gelişmek',
+    'Yeni insanlarla tanışmak / sosyalleşmek',
+    'Sağlıklı kalmak / kilo vermek',
+    'Diğer',
+  ];
+  final List<String> selectedOptions = [];
+  bool showOtherField = false;
+  String? otherInput;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +36,9 @@ class _QuestionStep4State extends State<QuestionStep4> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset('assets/images/logo.png', width: 75),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             const Text(
-              "Sence online etkinlikler mi?, yoksa fiziksel etkinlikler mi?",
+              "Spor Yapma Amacın Nedir?",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
@@ -37,22 +46,30 @@ class _QuestionStep4State extends State<QuestionStep4> {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 8),
+            const Text(
+              "Spor yaparken seni en çok motive eden şey nedir?\n(Birden fazla seçenek işaretlenebilir)",
+              style: TextStyle(color: Colors.white70, fontSize: 14),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
             Wrap(
               spacing: 10,
+              runSpacing: 10,
               children:
-                  options.map((opt) {
-                    final isSelected = selected.contains(opt);
+                  options.map((option) {
+                    final isSelected = selectedOptions.contains(option);
                     return FilterChip(
-                      label: Text(opt),
+                      label: Text(option),
                       selected: isSelected,
                       onSelected: (value) {
                         setState(() {
                           if (value) {
-                            selected.add(opt);
+                            selectedOptions.add(option);
                           } else {
-                            selected.remove(opt);
+                            selectedOptions.remove(option);
                           }
+                          showOtherField = selectedOptions.contains('Diğer');
                         });
                       },
                       selectedColor: Colors.white,
@@ -70,6 +87,21 @@ class _QuestionStep4State extends State<QuestionStep4> {
                     );
                   }).toList(),
             ),
+            if (showOtherField)
+              Padding(
+                padding: const EdgeInsets.only(top: 12),
+                child: TextFormField(
+                  onChanged: (value) => otherInput = value,
+                  decoration: InputDecoration(
+                    hintText: "Lütfen belirtin...",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey.shade100,
+                  ),
+                ),
+              ),
             const Spacer(),
             SizedBox(
               width: double.infinity,
@@ -81,17 +113,19 @@ class _QuestionStep4State extends State<QuestionStep4> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                onPressed:
-                    selected.isNotEmpty
-                        ? () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const QuestionStep5(),
-                            ),
-                          );
-                        }
-                        : null,
+                onPressed: () {
+                  final hasOther = selectedOptions.contains('Diğer');
+                  final isOtherValid =
+                      !hasOther ||
+                      (otherInput != null && otherInput!.trim().isNotEmpty);
+
+                  if (selectedOptions.isNotEmpty && isOtherValid) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const QuestionStep5()),
+                    );
+                  }
+                },
                 child: const Text(
                   "İleri",
                   style: TextStyle(color: Color(0xFF6A2EE8)),
@@ -110,6 +144,10 @@ class _QuestionStep4State extends State<QuestionStep4> {
                   Icon(Icons.circle, size: 10, color: Colors.white54),
                   SizedBox(width: 6),
                   Icon(Icons.circle, size: 10, color: Colors.white),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
                   SizedBox(width: 6),
                   Icon(Icons.circle, size: 10, color: Colors.white54),
                 ],

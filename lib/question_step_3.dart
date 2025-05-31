@@ -10,13 +10,13 @@ class QuestionStep3 extends StatefulWidget {
 
 class _QuestionStep3State extends State<QuestionStep3> {
   final List<String> days = [
-    'Pazartesi',
-    'Salı',
-    'Çarşamba',
-    'Perşembe',
-    'Cuma',
-    'Cumartesi',
-    'Pazar',
+    "Sabah erken",
+    "Öğle saatleri",
+    "Akşam saatleri",
+    "Gece geç saatler",
+    "Hafta içi",
+    "Hafta sonu",
+    "Duruma göre değişiyor",
   ];
   final List<String> selectedDays = [];
 
@@ -37,7 +37,7 @@ class _QuestionStep3State extends State<QuestionStep3> {
             Image.asset('assets/images/logo.png', width: 75),
             SizedBox(height: 25),
             const Text(
-              "Hangi günler daha çok spor yaparsın?",
+              "Genellikle hangi zamanlarda spor yapmayı tercih edersin?",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
@@ -118,6 +118,10 @@ class _QuestionStep3State extends State<QuestionStep3> {
                   Icon(Icons.circle, size: 10, color: Colors.white54),
                   SizedBox(width: 6),
                   Icon(Icons.circle, size: 10, color: Colors.white),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
                   SizedBox(width: 6),
                   Icon(Icons.circle, size: 10, color: Colors.white54),
                   SizedBox(width: 6),

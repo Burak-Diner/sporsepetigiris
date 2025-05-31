@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+import 'question_step_6.dart';
 
 class QuestionStep5 extends StatefulWidget {
   const QuestionStep5({super.key});
@@ -9,14 +9,8 @@ class QuestionStep5 extends StatefulWidget {
 }
 
 class _QuestionStep5State extends State<QuestionStep5> {
-  final List<String> options = [
-    'Forma girmek',
-    'Yeni insanlarla tanışmak',
-    'Eğlenmek',
-    'Kendini geliştirmek',
-    'Profesyonelleşmek',
-  ];
-  final List<String> selectedOptions = [];
+  final List<String> options = ['Online', 'Fiziksel'];
+  final List<String> selected = [];
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +29,7 @@ class _QuestionStep5State extends State<QuestionStep5> {
             Image.asset('assets/images/logo.png', width: 75),
             SizedBox(height: 25),
             const Text(
-              "Son olarak, sporsepetinden beklentin ne?",
+              "Sence online etkinlikler mi?, yoksa fiziksel etkinlikler mi?",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
@@ -46,19 +40,18 @@ class _QuestionStep5State extends State<QuestionStep5> {
             const SizedBox(height: 24),
             Wrap(
               spacing: 10,
-              runSpacing: 10,
               children:
                   options.map((opt) {
-                    final isSelected = selectedOptions.contains(opt);
+                    final isSelected = selected.contains(opt);
                     return FilterChip(
                       label: Text(opt),
                       selected: isSelected,
                       onSelected: (value) {
                         setState(() {
                           if (value) {
-                            selectedOptions.add(opt);
+                            selected.add(opt);
                           } else {
-                            selectedOptions.remove(opt);
+                            selected.remove(opt);
                           }
                         });
                       },
@@ -89,26 +82,23 @@ class _QuestionStep5State extends State<QuestionStep5> {
                   ),
                 ),
                 onPressed:
-                    selectedOptions.isNotEmpty
+                    selected.isNotEmpty
                         ? () {
-                          Navigator.pushAndRemoveUntil(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const HomeScreen(),
+                              builder: (_) => const QuestionStep6(),
                             ),
-                            (route) => false,
                           );
                         }
                         : null,
                 child: const Text(
-                  "Tamamla",
+                  "İleri",
                   style: TextStyle(color: Color(0xFF6A2EE8)),
                 ),
               ),
             ),
-
             const SizedBox(height: 12),
-
             Center(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -122,6 +112,10 @@ class _QuestionStep5State extends State<QuestionStep5> {
                   Icon(Icons.circle, size: 10, color: Colors.white54),
                   SizedBox(width: 6),
                   Icon(Icons.circle, size: 10, color: Colors.white),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
+                  SizedBox(width: 6),
+                  Icon(Icons.circle, size: 10, color: Colors.white54),
                 ],
               ),
             ),
