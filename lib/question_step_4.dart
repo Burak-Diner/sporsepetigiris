@@ -48,7 +48,7 @@ class _QuestionStep4State extends State<QuestionStep4> {
             ),
             const SizedBox(height: 8),
             const Text(
-              "Spor yaparken seni en çok motive eden şey nedir?\n(Birden fazla seçenek işaretlenebilir)",
+              "Spor yaparken seni en çok motive eden şey nedir?",
               style: TextStyle(color: Colors.white70, fontSize: 14),
               textAlign: TextAlign.center,
             ),
